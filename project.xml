@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<obj key="Projects" type="@Projects" id="_ID_1">
+	<obj key="tree" type="@ProjectTreeGroup" id="_ID_2">
+		<collection key="nodes" type="Object">
+			<obj key="" type="@ProjectTreeProjectDefaultInsertion" id="_ID_3">
+				<collection key="nodes" type="Object">
+<?php foreach($projects as $i => $project): ?>
+<?php $id = isset($id) ? $id : $i + 4; ?>
+					<obj key="" type="@ProjectTreeEntry" id="_ID_<?php echo $id ?>">
+<?php $id++; ?>
+						<obj key="project" type="@GitProject" id="_ID_<?php echo $id ?>">
+<?php $id++; ?>
+							<prop key="name" value="<?php echo $project->name ?>" type="String"/>
+							<obj key="fileFilter" type="@ViewFilter" id="_ID_<?php echo $id ?>">
+<?php $id++; ?>
+								<prop key="viewRecursive" value="true" type="boolean"/>
+								<prop key="viewIgnoredFiles" value="false" type="boolean"/>
+								<prop key="viewUnversionedFiles" value="true" type="boolean"/>
+								<prop key="viewUnchangedFiles" value="false" type="boolean"/>
+								<prop key="viewUnchangedAssumed" value="false" type="boolean"/>
+							</obj>
+							<obj key="settings" type="@ProjectSettings" id="_ID_<?php echo $id ?>">
+<?php $id++; ?>
+								<collection key="rootPaths" type="String">
+									<prop key="" value="<?php echo $project->homepath ?>" type="String"/>
+<?php foreach($project->projects as $subProject): ?>
+									<prop key="" value="<?php echo $subProject->homepath ?>" type="String"/>
+<?php endforeach; ?>
+								</collection>
+								<obj key="push" type="_NULL_" id=""/>
+								<prop key="removeDeleteLocalFiles" value="true" type="boolean"/>
+							</obj>
+							<obj key="ui" type="@ProjectUiSettings" id="_ID_<?php echo $id ?>">
+<?php $id++; ?>
+								<obj key="filterConfiguration" type="@FindObjectConfiguration" id="_ID_<?php echo $id ?>">
+<?php $id++; ?>
+									<prop key="enteredPattern" value="" type="_NULL_"/>
+									<collection key="patterns" type="String"/>
+									<prop key="regularExpressions" value="false" type="boolean"/>
+								</obj>
+								<prop key="commitNotes" value="" type="_NULL_"/>
+								<collection key="commitNotesHistory" type="String"/>
+							</obj>
+						</obj>
+					</obj>
+<?php endforeach; ?>
+				</collection>
+			</obj>
+		</collection>
+		<prop key="name" value="" type="_NULL_"/>
+	</obj>
+	<ref key="lastRecentlyUsedProject" type="@GitProject" id="_REF_5"/>
+	<obj key="gitRootSettingsSet" type="@RootSettingsSet" id="_ID_<?php echo $id ?>">
+<?php $id++; ?>
+		<collection key="roots" type="String">
+<?php foreach($projects as $project): ?>
+			<prop key="" value="<?php echo $project->homepath ?>" type="String"/>
+<?php foreach($project->projects as $subProject): ?>
+			<prop key="" value="<?php echo $subProject->homepath ?>" type="String"/>
+<?php endforeach; ?>
+<?php endforeach; ?>
+		</collection>
+<?php foreach($projects as $project): ?>
+		<obj key="root-<?php echo $project->path ?>" type="@RootSettings" id="_ID_<?php echo $id ?>">
+<?php $id++; ?>
+			<obj key="databaseCleanup" type="@DatabaseCleanupSettings" id="_ID_<?php echo $id ?>">
+<?php $id++; ?>
+				<prop key="lastKnownTimeWhereRepositoryWasOK" value="1393091287883" type="long"/>
+			</obj>
+			<obj key="log" type="_NULL_" id=""/>
+			<obj key="merge" type="_NULL_" id=""/>
+			<obj key="pull" type="@FetchSettings" id="_ID_<?php echo $id ?>"/>
+<?php $id++; ?>
+			<obj key="push" type="_NULL_" id=""/>
+			<obj key="reset" type="_NULL_" id=""/>
+		</obj>
+<?php foreach($project->projects as $subProject): ?>
+		<obj key="root-<?php echo $project->path ?>" type="@RootSettings" id="_ID_<?php echo $id ?>">
+<?php $id++; ?>
+			<obj key="databaseCleanup" type="@DatabaseCleanupSettings" id="_ID_<?php echo $id ?>">
+<?php $id++; ?>
+				<prop key="lastKnownTimeWhereRepositoryWasOK" value="1393091287883" type="long"/>
+			</obj>
+			<obj key="log" type="_NULL_" id=""/>
+			<obj key="merge" type="_NULL_" id=""/>
+			<obj key="pull" type="@FetchSettings" id="_ID_<?php echo $id ?>"/>
+<?php $id++; ?>
+			<obj key="push" type="_NULL_" id=""/>
+			<obj key="reset" type="_NULL_" id=""/>
+		</obj>
+<?php endforeach; ?>
+<?php endforeach; ?>
+	</obj>
+	<obj key="hgRootSettingsSet" type="_NULL_" id=""/>
+</obj>
